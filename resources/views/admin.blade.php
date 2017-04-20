@@ -30,14 +30,15 @@
 
 	<h1>Ramen Reviews</h1>
     Hello, {{ $user->email }}.
-    <p>You last logged in at: {{ $user->updated_at }}</p>
+    <!-- <p>You last logged in at: {{ $user->updated_at }}</p> -->
+    <br><br>
 	<a href="/reviews/new" class="btn btn-primary"> Write a Review </a>
 
         @foreach($reviews as $review)
         <div>
             <h3>{{ $review->title }}</h3>
-            <p>Restaurant: {{ $review->restaurant_name }}</p>
-            <p>Location: {{ $review->location_name }}</p>
+            <p>Restaurant: {{ $review->restaurant->restaurant_name }}</p>
+            <p>Location: {{ $review->location->location_name }}</p>
             <p>Body: {{ $review->body }}</p>
             <p><a href ="/reviews/{{ $review->id }}/delete" class="btn btn-default">Delete</a></p>
             <hr>

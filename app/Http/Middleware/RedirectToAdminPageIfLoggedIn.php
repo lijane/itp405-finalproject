@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class RedirectToLoginIfNotLoggedIn
+class RedirectToAdminPageIfLoggedIn
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,10 @@ class RedirectToLoginIfNotLoggedIn
     public function handle($request, Closure $next)
     {
         if(Auth::check()){
-            // return redirect('/admin');
-            return $next($request);
+            return redirect('/admin');
         }
         else{
-            return redirect('/login');
+            return $next($request);
         }
     }
 }

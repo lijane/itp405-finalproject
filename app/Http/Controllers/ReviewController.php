@@ -69,30 +69,33 @@ class ReviewController extends Controller
 
         // $reviews = Review::all();
         $reviews = Review::orderBy('id','desc')->get();
+        
+        // $restaurants = Restaurant::orderBy('id')->get();
+        // var_dump($restaurants);
 
-        $loginWasSuccessful = Auth::attempt([
-            'email' => request('email'),
-            'password' => request('password')
-        ]);
-
-        if ($loginWasSuccessful){
-            return redirect('/admin');
-        }
-
-        else{
-            return view('reviews.index',[
-        		'reviews' => $reviews
-        	]); 
-        } 
+        return view('reviews.index',[
+        	'reviews' => $reviews
+        ]); 
     }
 
     public function admin(){
 
         $reviews = Review::orderBy('id','desc')->get();
 
-        return view('adminindex',[
+        return view('admin',[
             'reviews' => $reviews,
             'user' => Auth::user()
         ]);  
     }
 }
+
+
+
+
+
+
+
+
+
+
+

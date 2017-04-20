@@ -38,6 +38,9 @@ class Kernel extends HttpKernel
         'protected' => [
         \App\Http\Middleware\RedirectToLoginIfNotLoggedIn::class,
         ],
+        'loggedin' => [
+        \App\Http\Middleware\RedirectToAdminPageIfLoggedIn::class,
+        ],
         'api' => [
             'throttle:60,1',
             'bindings',

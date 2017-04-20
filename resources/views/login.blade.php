@@ -12,6 +12,15 @@
         {{  session('successStatus') }}
       </div>
     @endif
+
+    <!-- Signup Success Flash Message -->
+    <div class="container">
+    @if (session('successStatus'))
+      <div class="alert alert-success" role="alert">
+        {{  session('successSignUp') }}
+      </div>
+    @endif
+
     <div class="container">
       @include('navigation')
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Hash;
+use Validator;
 
 class SignupController extends Controller
 {
@@ -12,12 +13,29 @@ class SignupController extends Controller
     	return view('signup');
     }
 
-    public function signup(){
-    	$user = new User();
-    	$user->email = request('email');
-    	$user->password = Hash::make(request('password'));
-    	$user->save();
+    public function signup(Request $request){
 
-    	return redirect('/login');
+    	$validation = Validator::make($request->all(),[
+			'email' => 'required',
+			'password' => 'required',
+			// 'password_confirmation' => 'required'
+		]);
+
+		if ($validation->passes()){
+	    	$user = new User();
+	    	$user->email = request('email');
+	    	$user->password = Hash::make(request('password'));
+	    	$user->save();
+
+			return redirect("/login")
+				->with('successSignUp','Your account has successfully been created!');
+			}
+
+		else {
+			return redirect('/signup')
+				->withInput()
+				->withErrors($validation);
+		}
+
     }
 }
