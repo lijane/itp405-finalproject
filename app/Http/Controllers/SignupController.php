@@ -9,32 +9,32 @@ use Validator;
 
 class SignupController extends Controller
 {
-    public function index() {
-    	return view('signup');
-    }
+	public function index() {
+		return view('signup');
+	}
 
-    public function signup(Request $request){
+	public function signup(Request $request){
 
-    	$validation = Validator::make($request->all(),[
+		$validation = Validator::make($request->all(),[
 			'email' => 'required',
 			'password' => 'required',
-		]);
+			]);
 
 		if ($validation->passes()){
-	    	$user = new User();
-	    	$user->email = request('email');
-	    	$user->password = Hash::make(request('password'));
-	    	$user->save();
+			$user = new User();
+			$user->email = request('email');
+			$user->password = Hash::make(request('password'));
+			$user->save();
 
 			return redirect("/login")
-				->with('successSignUp','Your account has successfully been created!');
-			}
+			->with('successSignUp','Your account has successfully been created!');
+		}
 
 		else {
 			return redirect('/signup')
-				->withInput()
-				->withErrors($validation);
+			->withInput()
+			->withErrors($validation);
 		}
 
-    }
+	}
 }

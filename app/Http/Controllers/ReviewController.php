@@ -14,11 +14,11 @@ class ReviewController extends Controller
 {
     public function destroy($reviewID){
 
-    $review = Review::find($reviewID);
-    $review->delete();
+        $review = Review::find($reviewID);
+        $review->delete();
 
-    	return redirect ('/admin')
-    		->with('successDelete','Review was deleted successfully!');
+        return redirect ('/admin')
+        ->with('successDelete','Review was deleted successfully!');
     }
 
     public function create(){
@@ -26,10 +26,10 @@ class ReviewController extends Controller
         $restaurants = Restaurant::orderBy('restaurant_name')->get();
         $locations = Location::orderBy('location_name')->get();
 
-    	return view ('reviews.create',[
-    		'restaurants' => $restaurants,
-            'locations' => $locations
-    	]);
+        return view ('reviews.create',[
+          'restaurants' => $restaurants,
+          'locations' => $locations
+          ]);
     }
 
     public function store(Request $request){
@@ -37,12 +37,12 @@ class ReviewController extends Controller
     		'title' => request('title'),
     		'price' => request ('price'),
     		'artist' => request ('artist')    		
-    	]*/,[
-    		'title' => 'required',
-    		'body' => 'required',
-    		'restaurant' => 'required',
-            'location' => 'required'
-    	]);
+           ]*/,[
+           'title' => 'required',
+           'body' => 'required',
+           'restaurant' => 'required',
+           'location' => 'required'
+           ]);
 
     	if ($validation->passes()){
 
@@ -53,35 +53,35 @@ class ReviewController extends Controller
             $review->location_id = request('location');
             $review->save();
 
-    		return redirect('/admin')
-    			->with('successCreate','Review was created successfully!');
-    	}
+            return redirect('/admin')
+            ->with('successCreate','Review was created successfully!');
+        }
 
-    	else {
-    		return redirect ('/reviews/new')
-    			->withInput()
-    			->withErrors($validation);
-    	}
+        else {
+          return redirect ('/reviews/new')
+          ->withInput()
+          ->withErrors($validation);
+      }
 
-    }
+  }
 
-    public function index(){
+  public function index(){
 
-        $reviews = Review::orderBy('id','desc')->get();
-        return view('reviews.index',[
-        	'reviews' => $reviews
-        ]); 
-    }
+    $reviews = Review::orderBy('id','desc')->get();
+    return view('reviews.index',[
+       'reviews' => $reviews
+       ]); 
+}
 
-    public function admin(){
+public function admin(){
 
-        $reviews = Review::orderBy('id','desc')->get();
+    $reviews = Review::orderBy('id','desc')->get();
 
-        return view('admin',[
-            'reviews' => $reviews,
-            'user' => Auth::user()
+    return view('admin',[
+        'reviews' => $reviews,
+        'user' => Auth::user()
         ]);  
-    }
+}
 }
 
 

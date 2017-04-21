@@ -152,12 +152,9 @@
       <br>
 
       <h2>Submission</h2>
-      Youtube Link Here
+      <iframe width="900" height="506" src="https://www.youtube.com/embed/iAHnXCjrCNE" frameborder="0" allowfullscreen></iframe><br><br>
+      <a href ="https://youtu.be/iAHnXCjrCNE" class="btn btn-primary">Youtube Link Here</a>
       <br><br>
-      <a href ="https://github.com/lijane/itp405-finalprojectlaravel" class="btn btn-primary">Laravel Github Link</a>
-      <br><br>
-      <a href ="https://github.com/lijane/itp405-finalprojectAPI" class="btn btn-primary">API Github Link</a>
-
     </div>
   </div>
 </body>
