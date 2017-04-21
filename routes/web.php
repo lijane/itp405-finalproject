@@ -4,11 +4,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/','ReviewController@login');
-// Route::post('/','ReviewController@loginsubmit');
-
-// Route::get('/reviews-guest','ReviewController@guestindex');
-
 Route::get('/reviews','ReviewController@index')->middleware('loggedin');
 Route::get('/admin', 'ReviewController@admin')->middleware('protected');
 Route::get('/reviews/new','ReviewController@create')->middleware('protected'); // Show create song form
@@ -26,10 +21,6 @@ Route::get('/account', function() {
         'user' => Auth::user()
     ]);
 })->middleware('protected');
-
-// Route::get('/user', function(){
-// 	dd(Auth::user());
-// });
 
 Route::get('/logout','LoginController@logout');
 

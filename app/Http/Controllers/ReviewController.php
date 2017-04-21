@@ -17,8 +17,8 @@ class ReviewController extends Controller
     $review = Review::find($reviewID);
     $review->delete();
 
-    	return redirect ('/reviews')
-    		->with('successStatus','Review was deleted successfully!');
+    	return redirect ('/admin')
+    		->with('successDelete','Review was deleted successfully!');
     }
 
     public function create(){
@@ -53,8 +53,8 @@ class ReviewController extends Controller
             $review->location_id = request('location');
             $review->save();
 
-    		return redirect('/reviews')
-    			->with('successStatus','Review was created successfully!');
+    		return redirect('/admin')
+    			->with('successCreate','Review was created successfully!');
     	}
 
     	else {
@@ -67,12 +67,7 @@ class ReviewController extends Controller
 
     public function index(){
 
-        // $reviews = Review::all();
         $reviews = Review::orderBy('id','desc')->get();
-        
-        // $restaurants = Restaurant::orderBy('id')->get();
-        // var_dump($restaurants);
-
         return view('reviews.index',[
         	'reviews' => $reviews
         ]); 

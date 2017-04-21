@@ -15,20 +15,19 @@
 
     a {
    		text-decoration: none;
+   		color: black;
     }
 
     .container {
-/*    	background-color: white;
-*/    	margin: 50px;
+    	margin: 50px;
     }
 
     .title {
     	margin-left: 50px;
-/*    	padding-top:20px;
-*/    }
+    }
 
    .label {
-       background-color: #ffe1c9;
+       background-color: rgba(255,255,255,1);
        padding-left: 20px;
        padding-right: 20px;
        padding-bottom: 10px;
@@ -62,26 +61,26 @@
 
 	.btn-primary {
 	  color: #fff;
-	  background-color: #337ab7;
-	  border-color: #2e6da4;
+	  background-color: #3e3d3d;
+	  /*border-color: #2e6da4;*/ 
 	}
 	.btn-primary:focus,
 	.btn-primary.focus {
 	  color: #fff;
-	  background-color: #286090;
-	  border-color: #122b40;
+	  background-color: #000;
+	  /*border-color: #122b40;*/
 	}
 	.btn-primary:hover {
 	  color: #fff;
-	  background-color: #286090;
-	  border-color: #204d74;
+	  background-color: #000;
+	  /*border-color: #204d74;*/
 	}
 	.btn-primary:active,
 	.btn-primary.active,
 	.open > .dropdown-toggle.btn-primary {
 	  color: #fff;
-	  background-color: #286090;
-	  border-color: #204d74;
+	  background-color: #000;
+	  /*border-color: #204d74;*/
 	}
 	.btn-primary:active:hover,
 	.btn-primary.active:hover,
@@ -94,7 +93,7 @@
 	.open > .dropdown-toggle.btn-primary.focus {
 	  color: #fff;
 	  background-color: #204d74;
-	  border-color: #122b40;
+	  /*border-color: #122b40;*/
 	}
 	.btn-primary:active,
 	.btn-primary.active,
@@ -111,7 +110,7 @@
 	.btn-primary[disabled].focus,
 	fieldset[disabled] .btn-primary.focus {
 	  background-color: #337ab7;
-	  border-color: #2e6da4;
+	  /*border-color: #2e6da4;*/
 	}
 	.btn-primary .badge {
 	  color: #337ab7;
@@ -121,20 +120,11 @@
 
 </head>
 <body>
-	
-	<!-- Review Delete Success Message -->
-	@if (session ('successStatus'))
-	<div class="alert alert-success" role="alert">
-		{{ session('successStatus') }}
-	</div>
-	@endif
-
 	@include('navigation')
 
 	<div class="container">
 		<div class="title">
 		<h1>Reviews</h1>
-		<!-- <a href="/reviews/new" class="btn btn-primary"> Write a Review </a> -->
 		</div>
 
         @foreach($reviews as $review)
@@ -144,11 +134,8 @@
             <p>{{ $review->body }}</p>
         </div>
         @endforeach
-
-    <br>
-
-</div>
-
+    	<br>
+	</div>
 </body>
 </html>
 

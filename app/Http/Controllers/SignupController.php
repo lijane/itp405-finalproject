@@ -18,7 +18,6 @@ class SignupController extends Controller
     	$validation = Validator::make($request->all(),[
 			'email' => 'required',
 			'password' => 'required',
-			// 'password_confirmation' => 'required'
 		]);
 
 		if ($validation->passes()){
