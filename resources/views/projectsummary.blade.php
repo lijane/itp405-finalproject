@@ -153,6 +153,11 @@
 
       <h2>Submission</h2>
       Youtube Link Here
+      <br><br>
+      <a href ="https://github.com/lijane/itp405-finalprojectlaravel" class="btn btn-primary">Laravel Github Link</a>
+      <br><br>
+      <a href ="https://github.com/lijane/itp405-finalprojectAPI" class="btn btn-primary">API Github Link</a>
+
     </div>
   </div>
 </body>
